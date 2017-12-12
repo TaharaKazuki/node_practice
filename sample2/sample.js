@@ -1,7 +1,7 @@
 var http = require('http');
 var fs = require('fs');
 
-var indexPage = fs.readdirSync('./index.html','utf-8');
+var indexPage = fs.readFileSync('./index.html','utf-8');
 var nextPage = fs.readFileSync('./next.html','utf-8');
 
 var server = http.createServer(function(req,res){
