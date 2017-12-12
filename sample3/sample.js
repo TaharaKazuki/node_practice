@@ -8,6 +8,7 @@ var indexPage = fs.readFileSync('./index.html','utf-8');
 var server = http.createServer(function(req, res){
   if(req.method == 'GET'){
     var urlParts = url.parse(req.url,true);
+    console.log('--- GET Request ---');
     console.log('nameは'+ urlParts.query.name);
     console.log('ageは'+ urlParts.query.age);
   } else {
