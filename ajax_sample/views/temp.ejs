@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+  <meta charset='UTF-8'>
+  <title>Ajax_sample</title>
+</head>
+<body>
+  <form>
+    <div id='msg'></div>
+    <button id="btn" type="button">Send</button>
+  </form>
+  <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script>
+    $(function(){
+      var AJAX = {
+        init: function(){
+          this.setParameter();
+          this.bindEvent();
+        },
+        setParameter: function(){
+          this.$btn = $('#btn');
+          this.$msg = $('#msg');
+        },
+        bindEvent: function(){
+          var _self = this;
+          this.$btn.on('click',function(){
+            $.ajax({
+              type:'POST',
+              url:'/ajax',
+              dataType:'json',
+              success: function(data){
+                _self.$msg.html(data.msg);
+              },
+              error:function(){
+                alert('error');
+              }
+            });
+          });
+        },
+      };
+
+      AJAX.init();
+    });    
+  </script>
+</body>
+</html>
